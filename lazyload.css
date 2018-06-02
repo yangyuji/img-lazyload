@@ -1,0 +1,7 @@
+img.lazyload {
+    opacity: 0;
+    transition: opacity .2s linear;
+}
+img.lazyloaded {
+    opacity: 1;
+}
