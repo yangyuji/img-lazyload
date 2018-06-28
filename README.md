@@ -13,6 +13,11 @@
 > * 向上滚动懒加载；
 > * 增加一些回调钩子；
 
-## 预览
-> * 页面[点击这里](https://yangyuji.github.io/img-lazyload/demo.html)
-> * ![扫描二维码](https://github.com/yangyuji/img-lazyload/blob/master/qrcode.png)
+## 使用方法
+```javascript
+<img class="lazyload" data-src="./w375.jpg" data-2x="./w750.jpg" alt="">
+...
+document.addEventListener('DOMContentLoaded', function(e) {
+   lazyload.init();
+}, false);
+```

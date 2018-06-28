@@ -1,13 +1,16 @@
 /*
 * author: "oujizeng",
 * license: "MIT",
+* github: "https://github.com/yangyuji/img-lazyload",
 * name: "lazyload.js",
-* version: "1.1.0"
+* version: "1.1.1"
 */
 
 (function (root, factory) {
     if (typeof module != 'undefined' && module.exports) {
         module.exports = factory();
+    } else if (typeof define == 'function' && define.amd) {
+        define( function () { return factory(); } );
     } else {
         root['lazyload'] = factory();
     }
