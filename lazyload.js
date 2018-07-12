@@ -3,7 +3,7 @@
 * license: "MIT",
 * github: "https://github.com/yangyuji/img-lazyload",
 * name: "lazyload.js",
-* version: "1.1.1"
+* version: "1.1.2"
 */
 
 (function (root, factory) {
@@ -52,41 +52,41 @@
 
             // 获取懒加载图片
             var imgs = doc.querySelectorAll('img.lazyload');
-            // 桥接，方便销毁
-            var detect = utils.throttle(lazyLoad, 0, 1000/60);
             // 执行一次
-            detect();
+            lazyLoad();
 
             // 绑定 scroll 和 resize
-            win.addEventListener('scroll', detect, false);
-            win.addEventListener('resize', detect, false);
+            win.addEventListener('scroll', lazyLoad, false);
+            win.addEventListener('resize', lazyLoad, false);
 
             // 懒加载方法
             function lazyLoad () {
-                [].forEach.call(imgs, function (img) {
-                    if (dpr >= 2) {
-                        var src = img.getAttribute('data-2x');
-                    } else {
-                        var src = img.getAttribute('data-src');
-                    }
-                    if (src) {
-                        var bound = img.getBoundingClientRect();
-                        if (bound.top < clientHeight * 1.2) {
-                            img.setAttribute('src', src);
-                            img.removeAttribute('data-src');
-                            img.removeAttribute('data-2x');
-                            // fadeIn显示
-                            img.addEventListener('load' , function() {
-                                img.classList.add('lazyloaded');
-                            }, false);
+                utils.throttle(function () {
+                    [].forEach.call(imgs, function (img) {
+                        if (dpr >= 2) {
+                            var src = img.getAttribute('data-2x');
+                        } else {
+                            var src = img.getAttribute('data-src');
                         }
-                    }
-                });
-                //完成所有替换后注销事件
-                [].every.call(imgs, function (img) {
-                    return !img.getAttribute('data-src')
-                }) && (win.removeEventListener("scroll", detect, false),
-                    win.removeEventListener("resize", detect, false));
+                        if (src) {
+                            var bound = img.getBoundingClientRect();
+                            if (bound.top < clientHeight * 1.2) {
+                                img.setAttribute('src', src);
+                                img.removeAttribute('data-src');
+                                img.removeAttribute('data-2x');
+                                // fadeIn显示
+                                img.addEventListener('load' , function() {
+                                    img.classList.add('lazyloaded');
+                                }, false);
+                            }
+                        }
+                    });
+                    //完成所有替换后注销事件
+                    [].every.call(imgs, function (img) {
+                        return !img.getAttribute('data-src')
+                    }) && (win.removeEventListener("scroll", lazyLoad, false),
+                        win.removeEventListener("resize", lazyLoad, false));
+                }, 0, 1000/60)
             }
         }
     }
