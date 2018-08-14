@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <title>image lazyload</title>
+    <link href="./lazyload.css" rel="stylesheet">
+    <style>
+        img.lazyload {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body onload="load()">
+
+<img class="lazyload" src="http://placehold.it/300x200&text=img-lazyload" data-src="./img/2068.jpg" alt="">
+
+<img class="lazyload" src="http://placehold.it/300x200&text=img-lazyload" data-src="./img/2078.jpg" alt="">
+
+<img class="lazyload" src="http://placehold.it/300x200&text=img-lazyload" data-src="./img/2104.jpg" alt="">
+
+<img class="lazyload" src="http://placehold.it/300x200&text=img-lazyload" data-src="./img/06652.jpg" alt="">
+
+<img class="lazyload" src="http://placehold.it/300x200&text=img-lazyload" data-src="./img/06661.jpg" alt="">
+
+<img class="lazyload" src="http://placehold.it/300x200&text=img-lazyload" data-src="./img/1973.jpg" alt="">
+
+<img class="lazyload" src="http://placehold.it/300x200&text=img-lazyload" data-src="./img/06230.jpg" alt="">
+
+<img class="lazyload" src="http://placehold.it/300x200&text=img-lazyload" data-src="./img/06277.jpg" alt="">
+
+<img class="lazyload" src="http://placehold.it/300x200&text=img-lazyload" data-src="./img/06317.jpg" alt="">
+
+<img class="lazyload" src="http://placehold.it/300x200&text=img-lazyload" data-src="./img/06408.jpg" alt="">
+
+<img class="lazyload" src="http://placehold.it/300x200&text=img-lazyload" data-src="./img/06501.jpg" alt="">
+
+<img class="lazyload" src="http://placehold.it/300x200&text=img-lazyload" data-src="./img/06525.jpg" alt="">
+
+<script src="./lazyload.js"></script>
+<script type="text/javascript">
+    function load() {
+        lazyload({
+            lazyClass: '.lazyload',
+            lazyAttr: 'data-src'
+        });
+    }
+</script>
+</body>
+</html>
