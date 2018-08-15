@@ -1,5 +1,5 @@
 # img-lazyload
-a light &amp; tiny image lazyload script with no dependancy
+a light &amp; tiny image lazyload script
 
 ## todo
 > * load different image according to different retina screen
@@ -16,3 +16,7 @@ window.addEventListener('load', function(e) {
    });
 }, false);
 ```
+
+## preview
+> * page [click here](https://yangyuji.github.io/img-lazyload/demo.html)
+> * ![qrcode](https://github.com/yangyuji/img-lazyload/blob/master/qrcode.png)
