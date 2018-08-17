@@ -3,7 +3,6 @@ a light &amp; tiny image lazyload script
 
 ## todo
 > * load different image according to different retina screen
-> * add the image loaded callback
 
 ## use
 ```javascript
@@ -12,7 +11,10 @@ a light &amp; tiny image lazyload script
 window.addEventListener('load', function(e) {
    lazyload({
        lazyClass: '.lazyload',
-       lazyAttr: 'data-src'
+       lazyAttr: 'data-src',
+       lazyLoaded: function (img) {
+           img.classList.add('lazyloaded');
+       }
    });
 }, false);
 ```

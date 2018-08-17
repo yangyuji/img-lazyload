@@ -45,7 +45,10 @@
     function load() {
         lazyload({
             lazyClass: '.lazyload',
-            lazyAttr: 'data-src'
+            lazyAttr: 'data-src',
+            lazyLoaded: function (img) {
+                img.classList.add('lazyloaded');
+            }
         });
     }
 </script>

@@ -3,7 +3,7 @@
 * license: "MIT",
 * github: "https://github.com/yangyuji/img-lazyload",
 * name: "lazyload.js",
-* version: "1.3.0"
+* version: "1.3.1"
 */
 
 (function (root, factory) {
@@ -36,20 +36,20 @@
         }
 
         function inView() {
-            var wT = win.pageYOffset,
-                wB = wT + win.innerHeight,
+            var offsetY = win.pageYOffset,
+                offsetB = offsetY + win.innerHeight,
                 hasLazy = false,
-                cRect, pT, pB, i = 0;
+                cRect, imgTop, imgBottom,
+                i = 0;
 
             while (i < imgs.length) {
-                cRect = imgs[i].getBoundingClientRect();
-                pT = wT + cRect.top;
-                pB = pT + cRect.height;
-
                 if (imgs[i].hasAttribute(opts.lazyAttr)) {
                     hasLazy = true;
 
-                    if (wT < pB && wB > pT) {
+                    cRect = imgs[i].getBoundingClientRect();
+                    imgTop = offsetY + cRect.top;
+                    imgBottom = imgTop + cRect.height;
+                    if (offsetY < imgBottom && offsetB > imgTop) {
                         loadImg(imgs[i]);
                     }
                 }
@@ -66,10 +66,12 @@
             if (src) {
                 img.setAttribute('src', src);
                 img.removeAttribute(opts.lazyAttr);
-                // fadeIn display
-                img.addEventListener('load', function () {
-                    img.classList.add('lazyloaded');
-                }, false);
+                if (typeof opts.lazyLoaded === 'function') {
+                    // image loaded callback
+                    img.addEventListener('load', function () {
+                        opts.lazyLoaded(img);
+                    }, false);
+                }
             }
         }
 
