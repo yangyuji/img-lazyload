@@ -1,5 +1,5 @@
 # img-lazyload
-a light &amp; tiny image lazyload script
+a light &amp; tiny image lazyload script, support for dynamic loading of images
 
 ## todo
 > * load different image according to different retina screen
@@ -9,7 +9,7 @@ a light &amp; tiny image lazyload script
 <img class="lazyload" data-src="./w375.jpg" alt="">
 ...
 window.addEventListener('load', function(e) {
-   lazyload({
+   new lazyload({
        lazyClass: '.lazyload',
        lazyAttr: 'data-src',
        lazyLoaded: function (img) {

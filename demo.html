@@ -14,7 +14,7 @@
         }
     </style>
 </head>
-<body onload="load()">
+<body>
 
 <img class="lazyload" src="http://placehold.it/300x200&text=img-lazyload" data-src="./img/06408.jpg" alt="">
 
@@ -42,15 +42,15 @@
 
 <script src="./lazyload.js"></script>
 <script type="text/javascript">
-    function load() {
-        lazyload({
+    window.addEventListener('load', function(e) {
+        new lazyLoad({
             lazyClass: '.lazyload',
             lazyAttr: 'data-src',
             lazyLoaded: function (img) {
                 img.classList.add('lazyloaded');
             }
         });
-    }
+    }, false);
 </script>
 </body>
 </html>
